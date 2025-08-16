@@ -43,9 +43,10 @@
                 The simplest way to set, track, and achieve your goals. Get started today!
             </p>
 
-            <!-- App Screenshot Placeholder -->
+            <!-- App Screenshot Placeholder - Now referencing a local image -->
             <div class="mb-10 w-full max-w-lg mx-auto rounded-xl shadow-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105">
-                <img src="https://placehold.co/800x450/e0f2fe/1e3a8a?text=Goal+Tracker+App+Screenshot" alt="Goal Tracker App Screenshot" class="w-full h-auto object-cover rounded-xl border border-blue-200">
+                <!-- Change 'images/app-screenshot.png' to your actual image path and filename -->
+                <img src="images/app-screenshot.png" alt="Goal Tracker App Screenshot" class="w-full h-auto object-cover rounded-xl border border-blue-200" onerror="this.onerror=null;this.src='https://placehold.co/800x450/e0f2fe/1e3a8a?text=Goal+Tracker+App+Screenshot';">
             </div>
 
             <!-- Google Play Button -->
@@ -103,6 +104,33 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Section - New section for multiple images -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-900">
+                App in Action
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Screenshot 1 -->
+                <div class="rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                    <img src="images/screenshot1.png" alt="App Screenshot 1" class="w-full h-auto object-cover rounded-xl border border-gray-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Screenshot+1';">
+                </div>
+                <!-- Screenshot 2 -->
+                <div class="rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                    <img src="images/screenshot2.png" alt="App Screenshot 2" class="w-full h-auto object-cover rounded-xl border border-gray-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Screenshot+2';">
+                </div>
+                <!-- Screenshot 3 -->
+                <div class="rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                    <img src="images/screenshot3.png" alt="App Screenshot 3" class="w-full h-auto object-cover rounded-xl border border-gray-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Screenshot+3';">
+                </div>
+                <!-- Add more images here by copying similar div and img tags -->
+            </div>
+            <p class="text-gray-700 mt-8 text-lg">
+                See how the Goal Tracker App helps you achieve your goals with its various features!
+            </p>
         </div>
     </section>
 
