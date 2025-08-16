@@ -29,6 +29,27 @@
             min-height: 100vh; /* This should make it fill the viewport height */
             flex-grow: 1; /* Allow the section to grow and fill available space */
         }
+        /* Keyframe animations for the subtle background blobs */
+        @keyframes blob {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        .animate-blob {
+            animation: blob 7s infinite cubic-bezier(0.6, 0.04, 0.98, 0.52);
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
     </style>
 </head>
 <body class="antialiased text-gray-800">
@@ -47,12 +68,11 @@
                 The simplest way to set, track, and achieve your goals. Get started today!
             </p>
 
-            <!-- Main App Screenshot - Significantly smaller and framed for phone aspect ratio -->
-            <div class="mb-10 w-full max-w-[200px] mx-auto bg-gray-900 p-2 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
-                <!-- Inner frame for the screen -->
+            <!-- Main App Screenshot - Much smaller and framed for phone aspect ratio -->
+            <div class="mb-10 w-full max-w-[160px] mx-auto bg-gray-900 p-2 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <!-- Inner frame for the screen, using a common phone aspect ratio like 9:18 (1:2) -->
                 <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
-                    <!-- Adjusted placeholder for a vertical phone screen -->
-                    <img src="images/app-screenshot.png" alt="Goal Tracker App Main Screenshot" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/200x380/1a202c/ffffff?text=Main+App+Screen';">
+                    <img src="images/app-screenshot.png" alt="Goal Tracker App Main Screenshot" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/160x320/1a202c/ffffff?text=Main+App+Screen';">
                 </div>
             </div>
 
@@ -114,29 +134,30 @@
         </div>
     </section>
 
-    <!-- App Screenshots Section - Updated for 3 smaller, non-clickable images with phone frames -->
+    <!-- App Screenshots Section - 3 smaller, non-clickable images, always side-by-side with phone frames -->
     <section class="py-16 px-4 bg-gray-100">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-900">
                 App in Action
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <!-- Force 3 columns even on smallest screens for side-by-side display -->
+            <div class="grid grid-cols-3 gap-4 justify-items-center">
                 <!-- Screenshot 1 with Phone Frame -->
-                <div class="w-full max-w-[250px] bg-gray-900 p-2 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
                     <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
-                        <img src="images/screenshot1.png" alt="App Screenshot 1" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/250x450/1a202c/ffffff?text=Screenshot+1';">
+                        <img src="images/screenshot1.png" alt="App Screenshot 1" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/120x240/1a202c/ffffff?text=Screenshot+1';">
                     </div>
                 </div>
                 <!-- Screenshot 2 with Phone Frame -->
-                <div class="w-full max-w-[250px] bg-gray-900 p-2 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
                     <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
-                        <img src="images/screenshot2.png" alt="App Screenshot 2" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/250x450/1a202c/ffffff?text=Screenshot+2';">
+                        <img src="images/screenshot2.png" alt="App Screenshot 2" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/120x240/1a202c/ffffff?text=Screenshot+2';">
                     </div>
                 </div>
                 <!-- Screenshot 3 with Phone Frame -->
-                <div class="w-full max-w-[250px] bg-gray-900 p-2 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
                     <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
-                        <img src="images/screenshot3.png" alt="App Screenshot 3" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/250x450/1a202c/ffffff?text=Screenshot+3';">
+                        <img src="images/screenshot3.png" alt="App Screenshot 3" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/120x240/1a202c/ffffff?text=Screenshot+3';">
                     </div>
                 </div>
             </div>
