@@ -50,6 +50,50 @@
         .animation-delay-2000 {
             animation-delay: 2s;
         }
+
+        /* Modal specific styles */
+        .modal {
+            position: fixed;
+            z-index: 1000; /* High z-index to appear on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8); /* Dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Start hidden */
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none; /* Allow clicks through when hidden */
+        }
+        .modal.active {
+            opacity: 1; /* Show when active */
+            pointer-events: auto; /* Enable clicks when active */
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Ensure image fits within modal */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+        }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="antialiased text-gray-800">
@@ -134,28 +178,28 @@
         </div>
     </section>
 
-    <!-- App Screenshots Section - 3 smaller, non-clickable images, always side-by-side with phone frames -->
+    <!-- App Screenshots Section - 3 smaller, clickable images, always side-by-side with phone frames -->
     <section class="py-16 px-4 bg-gray-100">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-900">
                 App in Action
             </h2>
             <!-- Force 3 columns even on smallest screens for side-by-side display -->
-            <div class="grid grid-cols-3 gap-4 justify-items-center">
+            <div class="grid grid-cols-3 gap-3 justify-items-center">
                 <!-- Screenshot 1 with Phone Frame -->
-                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105 cursor-pointer screenshot-thumbnail">
                     <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
                         <img src="images/screenshot1.png" alt="App Screenshot 1" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/120x240/1a202c/ffffff?text=Screenshot+1';">
                     </div>
                 </div>
                 <!-- Screenshot 2 with Phone Frame -->
-                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105 cursor-pointer screenshot-thumbnail">
                     <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
                         <img src="images/screenshot2.png" alt="App Screenshot 2" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/120x240/1a202c/ffffff?text=Screenshot+2';">
                     </div>
                 </div>
                 <!-- Screenshot 3 with Phone Frame -->
-                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105">
+                <div class="w-full max-w-[120px] bg-gray-900 p-1.5 rounded-2xl shadow-xl border-4 border-gray-700 transform transition-transform duration-300 hover:scale-105 cursor-pointer screenshot-thumbnail">
                     <div class="bg-black rounded-lg overflow-hidden aspect-[9/18] flex items-center justify-center">
                         <img src="images/screenshot3.png" alt="App Screenshot 3" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/120x240/1a202c/ffffff?text=Screenshot+3';">
                     </div>
@@ -192,6 +236,45 @@
             <p>&copy; 2025 Goal Tracker App. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Image Modal Structure -->
+    <div id="imageModal" class="modal hidden">
+        <span class="close-button" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+            const screenshots = document.querySelectorAll('.screenshot-thumbnail'); // Class for clickable images
+
+            screenshots.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    modal.classList.add('active'); // Add active class to show modal
+                    modal.classList.remove('hidden'); // Ensure it's not display:none
+                    modalImage.src = thumbnail.querySelector('img').src; // Get image source from the img tag inside the thumbnail div
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling on body when modal is open
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active'); // Remove active class to hide modal
+                modal.classList.add('hidden'); // Add hidden class for display:none
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active'); // Remove active class to hide modal
+                    modal.classList.add('hidden'); // Add hidden class for display:none
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
