@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Tracker App – Track Your Goals!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* This ensures the HTML and Body fill the entire viewport */
+        html, body {
+            height: 100%; /* Make sure HTML and body take full height */
+            margin: 0; /* Remove default margins */
+            padding: 0; /* Remove default padding */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light bluish-gray background */
+            display: flex; /* Use flexbox for body to center content vertically */
+            flex-direction: column; /* Stack content vertically */
+            min-height: 100%; /* Ensure body is at least 100% height */
+        }
+        /* Ensure the main section can flex to fill available space */
+        section.min-h-screen {
+            min-height: 100vh; /* This should make it fill the viewport height */
+            flex-grow: 1; /* Allow the section to grow and fill available space */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Hero Section - Updated to a cleaner, lighter background -->
+    <section class="min-h-screen flex items-center justify-center bg-white text-gray-800 p-4 shadow-lg rounded-b-xl">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Achieve Your Goals with the <span class="text-blue-600">Goal Tracker App</span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 opacity-90">
+                The simplest way to set, track, and achieve your goals. Get started today!
+            </p>
+
+            <!-- App Screenshot Placeholder -->
+            <div class="mb-10 w-full max-w-lg mx-auto rounded-xl shadow-2xl overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                <img src="https://placehold.co/800x450/e0f2fe/1e3a8a?text=Goal+Tracker+App+Screenshot" alt="Goal Tracker App Screenshot" class="w-full h-auto object-cover rounded-xl border border-blue-200">
+            </div>
+
+            <!-- Google Play Button -->
+            <a href="https://play.google.com/store/apps/details?id=com.yourcompany.yourapp" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.5 17.5v-11l9 5.5-9 5.5z"/>
+                </svg>
+                Download on Google Play
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">
+                Why Choose Goal Tracker App?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center">
+                    <div class="mb-4 text-blue-500">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Simple Interface</h3>
+                    <p class="text-gray-700">
+                        An intuitive and user-friendly design that makes setting and tracking goals effortless.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center">
+                    <div class="mb-4 text-green-500">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Motivating Reminders</h3>
+                    <p class="text-gray-700">
+                        Receive personalized notifications to keep you on track and inspired.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center">
+                    <div class="mb-4 text-purple-500">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3 3 7-7M9 10a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4zm6 0a2 2 0 110-4 2 2 0 010 4zm0-6a2 2 0 110-4 2 2 0 010 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Comprehensive Statistics</h3>
+                    <p class="text-gray-700">
+                        Visualize your progress with detailed statistics and graphs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="bg-gray-900 text-white py-16 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+                Start Achieving Your Goals Today!
+            </h2>
+            <p class="text-lg sm:text-xl mb-8 opacity-90">
+                Don't wait any longer! Download the Goal Tracker App and begin your journey to success.
+            </p>
+            <a href="https://play.google.com/store/apps/details?id=com.yourcompany.yourapp" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 text-lg font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.5 17.5v-11l9 5.5-9 5.5z"/>
+                </svg>
+                Download Now on Google Play
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6 text-center text-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2025 Goal Tracker App. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
